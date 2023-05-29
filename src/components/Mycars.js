@@ -7,20 +7,11 @@ class Mycars extends Component{
         alert('merci de ne pas copier le texte');
     }
 
-    addStyle = (e) =>{
-
-        if(e.target.classList.contains('styled')){
-            e.target.classList.remove('styled');
-        }
-        else{
-            e.target.classList.add('styled');
-        }
-    }
 
     render(){
         return (
             <div>
-                <h1 onMouseOver={this.addStyle}>{this.props.title}</h1>
+                <h1 >{this.props.title}</h1>
 
                 <p onCopy={this.noCopy}>La classe était considérée comme un “State Component” avant l\’arrivé des Hooks dans React.</p>
                 <Car color="red"></Car>
