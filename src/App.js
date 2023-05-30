@@ -5,14 +5,10 @@ import { render } from '@testing-library/react';
 
 class App extends Component {
 
-  state = {
-    titre: 'Mon catalogue Voitures'
-  }
-
   render(){
     return (
       <div className="App">
-        <Mycars title={this.state.titre} />
+        <Mycars  />
       </div>
     );
   }
