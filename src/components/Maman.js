@@ -26,7 +26,7 @@ class Maman extends Component{
                 <button onClick={this.ordreMaman}>Ordres de la mère</button>
                 <p>{this.state.messageMaman}</p>
                 <hr />
-                <Toto name="Toto" reponseToto={this.reponseToto} leState={this.state} />
+                <Toto name="Toto"  reponseToto={this.reponseToto} leState={this.state} />
             </div>
         )
     }
