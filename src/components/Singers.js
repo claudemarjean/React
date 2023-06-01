@@ -1,13 +1,14 @@
 import React from "react";
 
-const Users = ({name,age}) =>{ //destructuring de l'objet dans le paramètre du fonction flèché
-    console.log(name,age);
-
-    return (
-        <div>
-            <p>Chanteur: </p>
-        </div>
-    )
+class Users extends React.Component { 
+    render(){
+        const {name, age} = this.props;
+        return (
+            <div>
+                <p>Chanteur:{name} {age} ans</p>
+            </div>
+        )
+    }
 }
 
 export default Users;
