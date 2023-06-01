@@ -1,7 +1,6 @@
 import React from "react";
 
-const Users = props =>{
-    const {name,age} = props; //destructuring de l'objet props
+const Users = ({name,age}) =>{ //destructuring de l'objet dans le paramètre du fonction flèché
     console.log(name,age);
 
     return (
