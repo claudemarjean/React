@@ -1,15 +1,15 @@
 import React from "react";
 
 const Car = ({nom, color, year}) =>{
-    const couleurInfo = color ? (<p>Couleur: {color} </p>) : (<p>Couleur: Néant </p>);
+    const couleurInfo = color ? (`Couleur: ${color}`) : ('Couleur: Néant');
 
     if(nom){
         return(
-            <div style={{backgroundColor: 'pink', width : '400px', padding: '10px', margin: '5px auto'}}>
-                <p>Marque: {nom}</p>
-                <p>Age: {year}</p>
-                { couleurInfo }
-            </div>
+            <tr>
+                <td>Marque: {nom}</td>
+                <td>Age: {year}</td>
+                <td>{ couleurInfo }</td>
+            </tr>
         );
     }
     if(!nom){
