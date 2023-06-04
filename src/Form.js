@@ -1,15 +1,16 @@
 import React,{Component} from "react";
-
-const titreRouge = {
-    fontSize: '50px', 
-    color : "red"
-}
+import './myCss.css';
+import MyHead from "./myHeaderOne";
+import styles from "./myCss.module.css";
 
 class Form extends Component{
     render(){
+
+
         return(
             <div>
-                <h1 style={titreRouge}>Commentaire</h1>
+                <h1 className={styles.green}>Commentaire 1</h1>
+                <MyHead/>
                 <button>Valider</button>
             </div>
         )
