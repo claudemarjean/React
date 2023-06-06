@@ -14,7 +14,7 @@ class LifeCycle extends Component {
     }
 
     componentDidMount() { 
-        console.log(`Etape ${this.state.step} :je suis dans le componentDidMount()`)
+        console.log(`Etape ${this.state.step} :je suis dans le componentDidMount() `)
      }
 
     render() {
