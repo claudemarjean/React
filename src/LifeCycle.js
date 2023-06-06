@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ChildComponent from './ChildComponent';
 
 class LifeCycle extends Component {
 
@@ -15,7 +14,18 @@ class LifeCycle extends Component {
     }
 
     componentDidMount() { 
-        console.log(`Etape ${this.state.step} :je suis dans le componentDidMount() `)
+        console.log(`Etape ${this.state.step} :je suis dans le componentDidMount() `);
+        this.setState({
+            name: this.props.name,
+            step: this.state.step + 1
+        })
+        console.log(`Etape ${this.state.step} :SET state a changé le state  dans le componentDidMount() `);
+     }
+
+     componentDidUpdate(prevProps, prevState){
+        console.log(`Etape ${this.state.step} :je suis dans le componentDidUpdate`);
+        console.log(prevState);
+        console.log(this.state);
      }
 
     render() {
@@ -25,7 +35,6 @@ class LifeCycle extends Component {
                 {console.log(`Etape ${this.state.step} :je suis dans le maj du DOM`)}
                 <p>chargement: {this.state.step}</p>
                 <p>Nom: {this.state.name}</p>
-                <ChildComponent/>
             </div>
         )
     }
