@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ChildComponent from './ChildComponent';
 
 class LifeCycle extends Component {
 
@@ -24,6 +25,7 @@ class LifeCycle extends Component {
                 {console.log(`Etape ${this.state.step} :je suis dans le maj du DOM`)}
                 <p>chargement: {this.state.step}</p>
                 <p>Nom: {this.state.name}</p>
+                <ChildComponent/>
             </div>
         )
     }
