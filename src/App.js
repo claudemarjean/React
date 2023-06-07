@@ -1,28 +1,15 @@
-import React,{Component} from 'react';
-import './App.css';
-import MyComponent from './MyComponent';
+import React, { Component } from 'react'
+import ParentComponent from './ParentComponent'
+import './App.css'
 
 class App extends Component {
-
-  state = {
-    age: 27
-  }
-
-  addOneYear = () =>{
-    this.setState((prevState)=>({
-      age : prevState.age + 1
-    }));
-  }
-
-  render(){
+  render() {
     return (
-      <div className="App">
-        <MyComponent age={this.state.age}/>
-        <button onClick={this.addOneYear}>Changer le props</button>
+      <div className='App'>
+        <ParentComponent/>
       </div>
-    );
+    )
   }
-  
 }
 
 export default App;
