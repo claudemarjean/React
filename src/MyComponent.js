@@ -17,11 +17,24 @@ class MyComponent extends Component {
         return null;
     }
 
+    forcerChangement = () =>{
+        this.forceUpdate(() =>{
+            console.log('je force le changement');
+        });
+    }
+
+    shouldComponentUpdate(nextProps, nextState) { 
+        console.log("je suis dans shoult component update");
+        return true;
+     }
+
     render() {
+        console.log('Je suis dans le render');
         return (
         <div>
             <p>Nom: {this.props.name}</p>
             <p>Age: {this.props.age}</p>
+            <button onClick={this.forcerChangement}>Forcer</button>
         </div>
         )
     }
