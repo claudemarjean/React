@@ -43,4 +43,4 @@ class Pain extends Component {
   }
 }
 
-export default countHits(Pain)
+export default countHits(Pain, 15)

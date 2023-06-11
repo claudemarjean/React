@@ -44,4 +44,4 @@ class Naruto extends Component {
   }
 }
 
-export default countHits(Naruto)
+export default countHits(Naruto,10)

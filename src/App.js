@@ -14,15 +14,15 @@ class App extends Component {
     }
   }
 
-  reduceLife = param =>{
+  reduceLife = (param, param2) =>{
     if(param === 'Naruto'){
       this.setState({
-        pain : this.state.pain - 10
+        pain : this.state.pain - param2
       })
     }
     if(param === 'Pain'){
       this.setState({
-        naruto : this.state.naruto - 10
+        naruto : this.state.naruto - param2
       })
     }
   }
