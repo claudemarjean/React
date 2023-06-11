@@ -1,44 +1,30 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
+import Naruto from './components/Naruto';
+import Pain from './components/Pain';
+import Sasuke from './components/Sasuke';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
-import Naruto from './Naruto';
-import Pain from './Pain';
-
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       naruto : 100,
-       pain : 100
-    }
-  }
-
-  reduceLife = (param, param2) =>{
-    if(param === 'Naruto'){
-      this.setState({
-        pain : this.state.pain - param2
-      })
-    }
-    if(param === 'Pain'){
-      this.setState({
-        naruto : this.state.naruto - param2
-      })
-    }
-  }
-
-  render(){
+  render() {
     return (
-      <div className="container text-center">
-        <h1>Naruto vs Pain</h1>
-        <hr/>
+      <div className='container text-center'>
+        <h1>Cliquez sur les gentils</h1>
         <div className='row'>
-          <Naruto name='Naruto' life={this.state.naruto} reduceHandler={this.reduceLife}/>
-          <Pain name='Pain' life={this.state.pain} reduceHandler={this.reduceLife}/>
+          <ErrorBoundary >
+            <Naruto/>
+          </ErrorBoundary>
+          <ErrorBoundary >
+            <Pain/>
+          </ErrorBoundary>
+          <ErrorBoundary >
+            <Sasuke/>
+          </ErrorBoundary>
         </div>
       </div>
     )
   }
 }
 
-export default App;
+export default App
