@@ -14,6 +14,13 @@ const countHits = (WrappedComponent) =>{
             }
             )
         }
+
+        componentDidUpdate(prevProps, prevState) { 
+            if(this.state !== prevState){
+                const CompName = WrappedComponent.name;
+                this.props.reduceHandler(CompName);
+            }
+        } 
     
         render(){
             return <WrappedComponent addOneHit={this.addOne} hocState={this.state} {...this.props}/>
