@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
+import countHits from './CountHits';
 import naruto from './naruto.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const narutoStyle = {
-    width: '30%'
+    width: '50%'
 };
 
 class Naruto extends Component {
-    state={
-        hits: 0
-    }
-
-    addOne = () =>{
-        this.setState( prevState =>{
-            return {
-                hits: prevState.hits + 1
-            }
-        }
-        )
-    }
 
   render() {
+
+    const {name, addOneHit, hocState} = this.props;
+
     return (
       <div className='col'>
         <img src={naruto}  alt='naruto' style={narutoStyle} /><br/>
-        <button onClick={this.addOne} className='btn btn-success'  >Frapper</button>
+        <button onClick={addOneHit} className='btn btn-success'  >{name} Frappe</button>
         <table className='table table-striped m-3'>
             <thead>
                 <tr>
@@ -34,7 +26,7 @@ class Naruto extends Component {
             <tbody>
                 <tr>
                     <td>
-                        {this.state.hits}
+                        {hocState.hits}
                     </td>
                 </tr>
             </tbody>
@@ -44,4 +36,4 @@ class Naruto extends Component {
   }
 }
 
-export default Naruto
+export default countHits(Naruto)

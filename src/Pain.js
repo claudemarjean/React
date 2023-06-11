@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
+import countHits from './CountHits';
 import pain from './pain.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const painStyle = {
-    width: '36.4%'
+    width: '60.5%'
 };
 
 class Pain extends Component {
-    state={
-        hits: 0
-    }
-
-    addOne = () =>{
-        this.setState( prevState =>{
-            return {
-                hits: prevState.hits + 1
-            }
-        }
-        )
-    }
 
   render() {
+    const {name, addOneHit, hocState} = this.props;
+
     return (
       <div className='col'>
         <img src={pain}  alt='pain' style={painStyle} /><br/>
-        <button onClick={this.addOne} className='btn btn-success'  >Frapper</button>
+        <button onClick={addOneHit} className='btn btn-success'  >{name} Frappe</button>
         <table className='table table-striped m-3'>
             <thead>
                 <tr>
@@ -34,7 +25,7 @@ class Pain extends Component {
             <tbody>
                 <tr>
                     <td>
-                        {this.state.hits}
+                        {hocState.hits}
                     </td>
                 </tr>
             </tbody>
@@ -44,4 +35,4 @@ class Pain extends Component {
   }
 }
 
-export default Pain
+export default countHits(Pain)
