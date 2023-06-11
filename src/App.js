@@ -1,10 +1,18 @@
+import React,{Component} from 'react';
 import './App.css';
-import Form from './Form';
+import Naruto from './Naruto';
+import Pain from './Pain';
+
 
 function App() {
   return (
-    <div className="App"> 
-      <Form />
+    <div className="container text-center">
+      <h1>Naruto vs Pain</h1>
+      <hr/>
+      <div className='row'>
+        <Naruto/>
+        <Pain/>
+      </div>
     </div>
   );
 }
