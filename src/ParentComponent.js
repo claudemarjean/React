@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SimpleComponent from './SimpleComponent'
 import PureComp from './PureComponent'
+import FunctionComp from './FunctionComp'
 
 class ParentComponent extends Component {
     constructor(props){
@@ -28,12 +29,17 @@ class ParentComponent extends Component {
     }
 
     render() {
-        console.log('%c RENDER() DU COMPOSANT PARENT','color: white;')
+        console.log('%c RENDER() DU COMPOSANT PARENT','color: red;')
 
         return (
         <div>
+            <p>
+                <span className='red'>ParentComponent</span>
+                {this.state.name}
+            </p>
             <SimpleComponent name={this.state.name}/>
             <PureComp name={this.state.name}/>
+            <FunctionComp name={this.state.name}/>
             <button onClick={this.changeToBatman}>Changer en batman</button>
         </div>
         )
