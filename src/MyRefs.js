@@ -1,31 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class MyRefs extends Component {
-
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         value: ''
-      }
-
-      this.myTitle = React.createRef();
-
-      this.myInput = React.createRef();
-    }
-
-    addFocus = () =>{
-            this.myInput.current.focus();
-        
-    }
-
-  render() {
-    return (
-      <div>
-        <input type="text" ref={this.myInput}/>
-      </div>
-    )
-  }
-}
+const MyRefs = React.forwardRef((props, ref) => {
+  console.log(props);
+  console.log(ref);
+  
+  return (
+    <div>
+      <input type="text" ref={ref} />
+    </div>
+  )
+})
 
 export default MyRefs

@@ -9,12 +9,12 @@ class App extends Component {
     this.refComponent = React.createRef();
   }
   handleClick = () =>{
-    this.refComponent.current.addFocus();
+    this.refComponent.current.focus();
   }
   render(){
     return (
       <div className="App">
-        <MyRefs ref={this.refComponent}/>
+        <MyRefs ref={this.refComponent} name='Toto'/>
   
         <button onClick={this.handleClick}>Valider</button>
       </div>
