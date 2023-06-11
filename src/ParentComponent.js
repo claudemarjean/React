@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SimpleComponent from './SimpleComponent'
 import PureComp from './PureComponent'
 import FunctionComp from './FunctionComp'
+import ButtonComponent from './ButtonComponent'
 
 class ParentComponent extends Component {
     constructor(props){
@@ -13,13 +14,14 @@ class ParentComponent extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) { 
-        console.log('shouldComponentUpdate() décide TRUE par défaut'); 
         // console.log(this.state.name);
         // console.log(nextState.name);
-        // if(this.state.name !== nextState.name){
-        //     return true;
-        // }
-        return true;
+        if(this.state.name !== nextState.name){
+            console.log('shouldComponentUpdate() du composant Parent décide de return  TRUE '); 
+            return true;
+        }
+        console.log('shouldComponentUpdate() du composant Parent décide de return    FALSE '); 
+        return false;
      }
 
      changeToBatman = () =>{
@@ -40,7 +42,8 @@ class ParentComponent extends Component {
             <SimpleComponent name={this.state.name}/>
             <PureComp name={this.state.name}/>
             <FunctionComp name={this.state.name}/>
-            <button onClick={this.changeToBatman}>Changer en batman</button>
+            <ButtonComponent method={this.changeToBatman}/>
+            
         </div>
         )
     }
