@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import naruto from '../naruto.png'
+import HOCompnent from './HOCompnent';
 
 const styleInline = {
   width: '60%'
@@ -7,23 +8,15 @@ const styleInline = {
 
 class Naruto extends Component {
 
-  state = {
-    bg : ''
-  }
-
-  handleClick = ()=>{
-    this.setState({
-      bg : 'bg-success'
-    })
-  }
-
   render() {
+    const {clickHandle,bgState} = this.props;
+
     return (
-      <div className={`col ${this.state.bg}`}>
-        <img onClick={this.handleClick} src={naruto} alt="naruto" style={styleInline} />
+      <div className={`col ${bgState}`}>
+        <img onClick={clickHandle} src={naruto} alt="naruto" style={styleInline} />
       </div>
     )
   }
 }
 
-export default Naruto
+export default HOCompnent(Naruto)

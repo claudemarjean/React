@@ -1,27 +1,21 @@
 import React, { Component } from 'react'
 import pain from '../pain.png'
+import HOCompnent from './HOCompnent';
 
 const styleInline = {
   width: '80%'
 };
 
 class Pain extends Component {
-  state = {
-    bg : ''
-  }
-
-  handleClick = ()=>{
-    this.setState({
-      bg : 'bg-success'
-    })
-  }
+ 
   render() {
+    const {clickHandle,bgState} = this.props;
     return (
-      <div className={`col ${this.state.bg}`}>
-        <img onClick={this.handleClick} src={pain} alt="pain" style={styleInline}/>
+      <div className={`col ${bgState}`}>
+        <img onClick={clickHandle} src={pain} alt="pain" style={styleInline}/>
       </div>
     )
   }
 }
 
-export default Pain
+export default HOCompnent(Pain)

@@ -13,13 +13,13 @@ class App extends Component {
         <h1>Cliquez sur les gentils</h1>
         <div className='row'>
           <ErrorBoundary >
-            <Naruto/>
+            <Naruto />
           </ErrorBoundary>
           <ErrorBoundary >
-            <Pain/>
+            <Pain />
           </ErrorBoundary>
           <ErrorBoundary >
-            <Sasuke/>
+            <Sasuke />
           </ErrorBoundary>
         </div>
       </div>

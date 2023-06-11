@@ -1,33 +1,24 @@
 import React, { Component } from 'react'
 import sasuke from '../sasuke.png'
+import HOCompnent from './HOCompnent';
 
 const styleInline = {
     width: '70%'
   };
 
 class Sasuke extends Component {
-    state = {
-        bg : ''
-      }
-    
-      handleClick = ()=>{
-        this.setState({
-          bg : 'bg-danger'
-        })
-      }
-
   render() {
-
-    if(this.state.bg === "bg-danger"){
+    const {clickHandle,bgState} = this.props;
+    if(bgState === "bg-danger"){
         throw new Error();
     }
 
     return (
-        <div className={`col ${this.state.bg}`}>
-        <img onClick={this.handleClick} src={sasuke} alt="sasuke" style={styleInline} />
+        <div className={`col ${bgState}`}>
+        <img onClick={clickHandle} src={sasuke} alt="sasuke" style={styleInline} />
       </div>
     )
   }
 }
 
-export default Sasuke
+export default HOCompnent(Sasuke)
