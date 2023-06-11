@@ -10,8 +10,8 @@ function App() {
       <h1>Naruto vs Pain</h1>
       <hr/>
       <div className='row'>
-        <Naruto/>
-        <Pain/>
+        <Naruto render={(uzumaki)=> uzumaki && "Naruto"}/>
+        <Pain name="Pain"/>
       </div>
     </div>
   );

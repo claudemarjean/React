@@ -24,7 +24,7 @@ class Pain extends Component {
     return (
       <div className='col'>
         <img src={pain}  alt='pain' style={painStyle} /><br/>
-        <button onClick={this.addOne} className='btn btn-success'  >Frapper</button>
+        <button onClick={this.addOne} className='btn btn-success'  >{this.props.name} Frappe</button>
         <table className='table table-striped m-3'>
             <thead>
                 <tr>

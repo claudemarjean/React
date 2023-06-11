@@ -8,6 +8,7 @@ const narutoStyle = {
 
 class Naruto extends Component {
     state={
+        uzumaki: true,
         hits: 0
     }
 
@@ -24,7 +25,7 @@ class Naruto extends Component {
     return (
       <div className='col'>
         <img src={naruto}  alt='naruto' style={narutoStyle} /><br/>
-        <button onClick={this.addOne} className='btn btn-success'  >Frapper</button>
+        <button onClick={this.addOne} className='btn btn-success' >{this.props.render(this.state.uzumaki)} Frappe</button>
         <table className='table table-striped m-3'>
             <thead>
                 <tr>
