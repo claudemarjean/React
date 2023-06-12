@@ -3,7 +3,7 @@ import naruto from './naruto.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const narutoStyle = {
-    width: '30%'
+    width: '50%'
 };
 
 class Naruto extends Component {

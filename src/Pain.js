@@ -3,7 +3,7 @@ import pain from './pain.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const painStyle = {
-    width: '36.4%'
+    width: '60%'
 };
 
 class Pain extends Component {
