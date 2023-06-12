@@ -1,10 +1,10 @@
 import './App.css';
-import Form from './Form';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Community from './components/Community';
 import Docs from './components/Docs';
 import Tutorials from './components/Tutorials';
 import Menu from './components/Menu';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   return (
@@ -12,9 +12,10 @@ function App() {
       <Menu />
 
       <Routes>
-        <Route exact path="/" element={<Docs />} />
+        <Route path="/" element={<Docs />} />
         <Route path="/tutorial" element={<Tutorials />} />
-        <Route strict path="/community" element={<Community />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
