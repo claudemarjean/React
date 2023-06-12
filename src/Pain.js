@@ -7,24 +7,14 @@ const painStyle = {
 };
 
 class Pain extends Component {
-    state={
-        hits: 0
-    }
-
-    addOne = () =>{
-        this.setState( prevState =>{
-            return {
-                hits: prevState.hits + 1
-            }
-        }
-        )
-    }
+    
 
   render() {
+    const {hits, addOne,name} = this.props;
     return (
       <div className='col'>
         <img src={pain}  alt='pain' style={painStyle} /><br/>
-        <button onClick={this.addOne} className='btn btn-success'  >{this.props.name} Frappe</button>
+        <button onClick={addOne} className='btn btn-success'  >{name} Frappe</button>
         <table className='table table-striped m-3'>
             <thead>
                 <tr>
@@ -34,7 +24,7 @@ class Pain extends Component {
             <tbody>
                 <tr>
                     <td>
-                        {this.state.hits}
+                        {hits}
                     </td>
                 </tr>
             </tbody>

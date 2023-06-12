@@ -1,7 +1,11 @@
-import React,{Component} from "react";
+import React,{Component, Fragment} from "react";
 
 class AddHits extends Component{
     state={
+        fighters:{
+            Naruto: true,
+            Pain: true
+        },
         hits: 0
     }
 
@@ -16,9 +20,9 @@ class AddHits extends Component{
 
     render(){
         return(
-            <div>
-                {this.props.render(this.state.hits, this.addOne)}
-            </div>
+            <Fragment>
+                {this.props.render(this.state.hits, this.addOne,this.state.fighters)}
+            </Fragment>
         )
     }
 }
