@@ -4,15 +4,17 @@ import Community from './components/Community';
 import Docs from './components/Docs';
 import Tutorials from './components/Tutorials';
 import Menu from './components/Menu';
+import {BrowserRouter, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter >
       <Menu/>
-      <Docs/>
-      <Tutorials/>
-      <Community/>
-    </div>
+
+      <Route exact path="/" component={Docs} />
+      <Route path="/tutorial" component={Tutorials} />
+      <Route path="/community" component={Community} />
+    </BrowserRouter>
   );
 }
 
