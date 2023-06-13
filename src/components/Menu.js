@@ -13,13 +13,13 @@ function Menu() {
             <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                    <Link className="nav-link" aria-current="page" to="/">Docs</Link>
+                    <Link className="nav-link"  to="/">Docs</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link " aria-current="page" to="/tutorial">Tutorial</Link>
+                    <Link className="nav-link "  to="/tutorial">Tutorial</Link>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link " aria-current="page" to="/community">Community</NavLink >
+                    <NavLink className="nav-link "  to="/community">Community</NavLink >
                 </li>
                 
             </ul>
