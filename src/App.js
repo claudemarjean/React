@@ -27,16 +27,7 @@ class App extends Component {
 
         <Routes>
           <Route path="/" element={<Docs />} />
-          <Route
-            path="/tutorial"
-            element={
-              this.state.underConst.Tutorials ? (
-                <Navigate to="/" replace />
-              ) : (
-                <Tutorials />
-              )
-            }
-          />
+          <Route path='/tutorial' Component={Tutorials}/>
           <Route path="/community" element={<Community />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
