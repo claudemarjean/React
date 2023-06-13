@@ -4,7 +4,7 @@ import Community from './components/Community';
 import Docs from './components/Docs';
 import Tutorials from './components/Tutorials';
 import Menu from './components/Menu';
-import ErrorPage from './components/ErrorPage';
+import ErrorPage from './components/Errorpage';
 
 function App() {
   return (
