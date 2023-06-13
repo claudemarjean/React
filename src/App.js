@@ -13,7 +13,7 @@ function App() {
 
       <Route exact path="/" component={Docs} />
       <Route path="/tutorial" component={Tutorials} />
-      <Route path="/community" component={Community} />
+      <Route strict path="/community/" component={Community} />
     </BrowserRouter>
   );
 }
