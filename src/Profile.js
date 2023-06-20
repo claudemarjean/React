@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import naruto from './naruto.png';
-import ProfileData from "./ProfileData";
+import ProfileData from "./components/ProfileData";
 
 const styleImage = {
     width: '30%'

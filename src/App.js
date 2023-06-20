@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Profile from './Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {MyContext} from './components/MyContext';
 
 class App extends React.Component {
 
@@ -12,8 +13,12 @@ class App extends React.Component {
     }
   }
   render(){
+
     return (
-      <Profile info={this.state.user}/>
+      <MyContext.Provider value={this.state.user}>
+        <Profile info={this.state.user}/>
+      </MyContext.Provider>
+      
     );
   }
   
