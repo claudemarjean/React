@@ -1,12 +1,22 @@
 import './App.css';
-import Form from './Form';
+import React from 'react';
+import Profile from './Profile';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App"> 
-      <Form />
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    user:{
+      name: 'Naruto',
+      age : 30
+    }
+  }
+  render(){
+    return (
+      <Profile info={this.state.user}/>
+    );
+  }
+  
 }
 
 export default App;
