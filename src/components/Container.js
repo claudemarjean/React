@@ -1,5 +1,6 @@
 import Reactn,{useState} from 'react';
 import ClassDisplayKey from './ClassDisplayKey';
+import FunctionDisplayKey from './FunctionDisplayKey';
 
 function Container() {
 
@@ -10,7 +11,7 @@ function Container() {
     <div className='text-center'>
         <button className='btn btn-primary m-3' onClick={()=>setShow(!show)}>{btnDisplay}</button>
         {
-            show && <ClassDisplayKey/>
+            show && <FunctionDisplayKey/>
         }
     </div>
   )
