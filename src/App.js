@@ -1,17 +1,13 @@
-import React from "react";
-import ClassState from "./components/ClassState";
-import FunctionState from "./components/FunctionState";
-
+import React from 'react';
+import './App.css';
+import ClassCount from './components/ClassCount';
 
 function App(){
   return(
-    <div>
-      <h1 className="text-center">UseState Hooks</h1>
-      <ClassState/>
-      <hr/>
-      <FunctionState/>
+    <div className='App'>
+      <ClassCount/>
     </div>
   )
 }
 
-export default App
+export default App;
