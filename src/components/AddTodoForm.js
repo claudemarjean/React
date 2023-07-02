@@ -4,12 +4,13 @@ const AddTodoForm = ({addNewTodo}) =>{
 
     const [addTodo, setAddTodo] = useState('');
 
-    
-
     const handleTodo = (e)=>{
         e.preventDefault();
         addNewTodo(addTodo);
+
+        setAddTodo('');
     }
+
     return(
         <form className="mt-4" onSubmit={handleTodo}>
             <div className="card card-body">
