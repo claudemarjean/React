@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import AddTodoForm from './AddTodoForm';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 
 const Todo = ()=>{
@@ -30,7 +30,7 @@ const Todo = ()=>{
             <ul className='list-group'>
                 {myTodos}
             </ul>
-            <AddTodoForm />
+            <AddTodoForm addNewTodo={addNewTodo}/>
         </div>
     )
 }
