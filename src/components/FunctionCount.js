@@ -7,7 +7,7 @@ function FunctionCount(){
 
     useEffect(()=>{
         console.log('mise à jour du titre via useEffect');
-         document.title = `vous avez cliqué ${count} fois`;   
+         document.title = `vous avez cliqué ${count} fois `;   
     },[])
 
     return(
