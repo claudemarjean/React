@@ -6,8 +6,8 @@ import FunctionCount from './components/FunctionCount';
 function App(){
   return(
     <div className='App'>
-      <ClassCount/>
-      {/* <FunctionCount/> */}
+      {/* <ClassCount/> */}
+      <FunctionCount/>
     </div>
   )
 }
