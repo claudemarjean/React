@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-// import ClassCount from './components/ClassCount';
+import ClassCount from './components/ClassCount';
 import FunctionCount from './components/FunctionCount';
 
 function App(){
   return(
     <div className='App'>
-      {/* <ClassCount/> */}
-      <FunctionCount/>
+      <ClassCount/>
+      {/* <FunctionCount/> */}
     </div>
   )
 }
