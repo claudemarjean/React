@@ -1,27 +1,22 @@
+import React,{useState} from "react";
 import './App.css';
-import React from 'react';
-import Profile from './Profile';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {MyContext} from './components/MyContext';
+import Button from "./components/Button";
+import Count from "./components/Count";
 
-class App extends React.Component {
+function App(){
 
-  state = {
-    user:{
-      name: 'Naruto',
-      age : 30
-    }
-  }
-  render(){
+  const[countOne, setCountOne] = useState({value: 0, btnColor:'success',increment: 25});
+  const[countTwo, setCountTwo] = useState({value: 0, btnColor:'danger',increment: 20});
 
-    return (
-      <MyContext.Provider value={this.state.user}>
-        <Profile info={this.state.user}/>
-      </MyContext.Provider>
-      
-    );
-  }
-  
+  return (
+    <div className="container">
+      <Count count={countOne.value} bgColor={countOne.btnColor}/>
+      <Count count={countTwo.value} bgColor={countTwo.btnColor}/>
+
+      <Button >Count 1</Button>
+      <Button >Count 2</Button>
+    </div>
+  );
 }
 
-export default App;
+export default App
