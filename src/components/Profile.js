@@ -1,16 +1,17 @@
 import React from 'react'
 
-function Profile() {
+function Profile({count, profile}) {
+    console.log("je suis dans la focntion profile");
   return (
     <div>
         <ul className='list-group'>
-            <li className='list-group-item'><p className='h2'>User ID:</p></li>
-            <li className='list-group-item'><strong>Nom:</strong></li>
-            <li className='list-group-item'><strong>Pseudo:</strong></li>
-            <li className='list-group-item'><strong>Email:</strong></li>
+            <li className='list-group-item'><p className='h2'>User ID:{count}</p></li>
+            <li className='list-group-item'><strong>Nom:{profile.name}</strong></li>
+            <li className='list-group-item'><strong>Pseudo:{profile.username}</strong></li>
+            <li className='list-group-item'><strong>Email:{profile.email}</strong></li>
         </ul>
     </div>
   )
 }
 
-export default Profile
+export default React.memo(Profile)
