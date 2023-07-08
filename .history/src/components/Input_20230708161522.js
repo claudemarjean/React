@@ -4,19 +4,13 @@ function Input(){
 
     const[count, setCount] = useState(0);
 
-    const setIntervalRef  = useRef();
-
     useEffect(()=>{
-        setIntervalRef.current =  setInterval(()=>{
+        const increment =  setInterval(()=>{
             setCount(prevCount =>{
                 return prevCount + 1;   
             })
         },1000)
     },[]);
-
-    const stopIncrement = ()=>{
-        clearInterval(setIntervalRef.current)
-    }
 
     return(
         <div>

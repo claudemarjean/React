@@ -5,9 +5,10 @@ function Input(){
     const[count, setCount] = useState(0);
 
     const setIntervalRef  = useRef();
+    const setInterval = useRef();
 
     useEffect(()=>{
-        setIntervalRef.current =  setInterval(()=>{
+        setInterval.current =  setInterval(()=>{
             setCount(prevCount =>{
                 return prevCount + 1;   
             })
@@ -15,7 +16,7 @@ function Input(){
     },[]);
 
     const stopIncrement = ()=>{
-        clearInterval(setIntervalRef.current)
+        clearInterval(increment)
     }
 
     return(

@@ -15,7 +15,7 @@ function Input(){
     },[]);
 
     const stopIncrement = ()=>{
-        clearInterval(setIntervalRef.current)
+        clearInterval(setInterval.current)
     }
 
     return(
