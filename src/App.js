@@ -3,17 +3,21 @@ import FancyInput from "./components/FancyInput";
 import "./App.css";
 
 function App() {
+
+  const date = new Date();
+
   const fancyInputRef = useRef();
 
-  const focusInput = () => {
-    fancyInputRef.current.focus();
-    // fancyInputRef.current.countMax();
+  const focusInput = (val) => {
+    fancyInputRef.current.focus(val);
+    fancyInputRef.current.countMax();
+    
   };
 
   return (
     <div className="App">
       <FancyInput ref={fancyInputRef} />
-      <button onClick={focusInput}>Cliquer</button>
+      <button onClick={() => focusInput(date.getDay())}>Cliquer</button>
     </div>
   );
 }
