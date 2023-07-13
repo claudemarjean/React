@@ -1,16 +1,20 @@
-import React,{useState, useRef, useEffect} from 'react';
+import React,{useState, useRef, useLayoutEffect} from 'react';
 import Content from './Content';
 
 function Box() {
 
     const[height, setHeight] = useState(80);
     const boxRef = useRef(null);
+    const timeRef = useRef(0)
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         if(boxRef.current.offsetHeight < 150){
             setHeight(height + 100);
+            console.log(`Attente: ${performance.now() - timeRef.current}`)
         }
     },[height])
+
+    timeRef.current = performance.now()
     
     const boxStyle = {
         width: '400px',
