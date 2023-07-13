@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "./components/Layout";
-import "./App.css"
+import "./App.css";
+import Box from "./components/Box";
 
 const App = () =>{
   return(
     <div className="App">
       <h1>useLayoutEffect</h1>
-      <Layout/>
+      <Box/>
     </div>
   );
 }
