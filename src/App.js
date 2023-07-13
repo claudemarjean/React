@@ -1,11 +1,12 @@
 import React from "react";
-import Input from "./components/Input";
+import Layout from "./components/Layout";
 import "./App.css"
 
-function App(){
+const App = () =>{
   return(
     <div className="App">
-      <Input/>
+      <h1>useLayoutEffect</h1>
+      <Layout/>
     </div>
   );
 }
