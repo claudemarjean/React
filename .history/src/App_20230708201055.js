@@ -6,8 +6,8 @@ function App() {
   const fancyInputRef = useRef();
 
   const focusInput = () => {
+    console.log(fancyInputRef.current);
     fancyInputRef.current.focus();
-    // fancyInputRef.current.countMax();
   };
 
   return (

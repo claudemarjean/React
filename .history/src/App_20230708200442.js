@@ -1,16 +1,16 @@
-import React, { useRef } from "react";
+import React,{useRef} from "react";
 import FancyInput from "./components/FancyInput";
-import "./App.css";
+import "./App.css"
 
-function App() {
+function App(){
   const fancyInputRef = useRef();
+  
+  const focusInput = ()=>{
+    console.log(fancyInputRef.current);
+    // fancyInputRef.current.focus();
+  }
 
-  const focusInput = () => {
-    fancyInputRef.current.focus();
-    // fancyInputRef.current.countMax();
-  };
-
-  return (
+  return(
     <div className="App">
       <FancyInput ref={fancyInputRef} />
       <button onClick={focusInput}>Cliquer</button>
