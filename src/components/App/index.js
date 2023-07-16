@@ -1,10 +1,16 @@
 
 import React from 'react';
+import '../../App.css';
+import Header from '../Header';
+import Landing from '../landing';
+import Footer from '../Footer';
 
 function App() {
   return (
-    <div className="App">
-        hi!
+    <div >
+        <Header/>
+        <Landing/>
+        <Footer/>
     </div>
   );
 }
