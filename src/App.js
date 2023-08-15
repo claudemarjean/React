@@ -33,7 +33,6 @@ const App =  () => {
   const hebUn = document.querySelector("#hebUn");
   const hebDeux = document.querySelector("#hebDeux");
 
-  let formCorrigeErreur = '';
   const erreurPrenom = prenom === '' && <li className="card-text">Prénom obligatoire.</li>;
   const erreurNom = nom ==='' && <li className="card-text">Nom obligatoire.</li>;
   const erreurMail = mail ==='' && <li className="card-text">Adresse Email obligatoire.</li>;
@@ -112,30 +111,26 @@ const App =  () => {
       }
   }
 
-  if (corrigeErreur){
-     formCorrigeErreur =  (
-      <div className="card border-default mb-3" >
-      <div className="card-header">Corriger les erreurs suivantes</div>
-      <div className="card-body">
-        {erreurPrenom}
-        {erreurNom}
-        {erreurMail}
-        {erreurSexe}
-        {erreurInstitution}
-        {erreurAdresse}
-        {erreurPays}
-        {erreurCodePostal}
-        {erreurVille}
-        {erreurInscription}
-        {erreurHebergement}
-        
-      </div>
+
+  const formCorrigeErreur = corrigeErreur && (
+    <div className="card border-default mb-3" >
+    <div className="card-header">Corriger les erreurs suivantes</div>
+    <div className="card-body">
+      {erreurPrenom}
+      {erreurNom}
+      {erreurMail}
+      {erreurSexe}
+      {erreurInstitution}
+      {erreurAdresse}
+      {erreurPays}
+      {erreurCodePostal}
+      {erreurVille}
+      {erreurInscription}
+      {erreurHebergement}
+      
     </div>
-    );
-  }
-  
-  
-  
+  </div>
+  );
   
 
   const checkInscription = useEffect(()=>{
