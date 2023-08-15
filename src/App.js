@@ -24,6 +24,7 @@ const App =  () => {
   const [inscription, setInscription] = useState(null);
   const [hebergement, setHebergement] = useState(null);
   const [corrigeErreur, setCorrigeErreur] = useState(false);
+  const [afficherRecap,setAfficherRecap] = useState(false);
 
   const hommeElement = document.querySelector("#homme");
   const femmeElement = document.querySelector("#femme");
@@ -96,18 +97,21 @@ const App =  () => {
   }
 
   const handlePreValidate = e =>{
-    if( prenom === ''  && 
-      nom ==='' && 
-      mail ===''  && 
-      sexe === null  && 
-      institution ==='' &&  
-      adresse === '' &&
-      pays ==='' &&
-      codePostal === '' &&
-      ville ==='' &&
-      inscription === null &&
+    if( prenom === ''  || 
+      nom ==='' || 
+      mail ===''  || 
+      sexe === null  || 
+      institution ==='' ||  
+      adresse === '' ||
+      pays ==='' ||
+      codePostal === '' ||
+      ville ==='' ||
+      inscription === null ||
       hebergement === null ){
         setCorrigeErreur(true)
+      }
+      else{
+        setAfficherRecap(true);
       }
   }
 
@@ -130,6 +134,27 @@ const App =  () => {
       
     </div>
   </div>
+  );
+
+  const recapitulatif = afficherRecap && (
+    <div className="card border-default mb-3 mt-4" >
+      <div className="card-header">Récapitulatif de l'inscription</div>
+      <div className="card-body">
+        <p>
+          Bonjour {sexe == 0 ? 'Madame' : 'Monsieur'} {prenom} {nom}, vous avez procédé à une inscription pour la conférence #MaConf2020.<br/>
+          Le détail de votre enregistrement est le suivant:
+          <li>Académique {inscription} EUR</li>
+          <li>avec réservation {hebergement} EUR</li>
+          Le montant total est de {inscription + hebergement } EUR.<br/>
+          Un email vous sera envoyé prochainnement à cette adresse {mail} pour la mise en paiement de votre inscription.<br/>
+          Merci de consulter votre messagerie et de procéder au réglement de votre inscription.<br/>
+          En vous remerciant de votre inscription, à très bientôt à la conférence #MaConf2020.
+        </p>
+        <button type='button' className='btn btn-primary' >Confirmer</button>
+        <button type='button' className='btn btn-primary ' >Modifier les données</button>
+        
+      </div>
+    </div>
   );
   
 
@@ -203,7 +228,7 @@ const App =  () => {
         </div>
         <div className='container'>
           <label for="" className='form-label'>Email address*</label>
-          <input type="text" onChange={handleMail} className='form-control' value={mail}/>
+          <input type="email" onChange={handleMail} className='form-control' value={mail}/>
         </div>
 
         <div className='container'>
@@ -290,6 +315,7 @@ const App =  () => {
 
         <hr/>
         <button type='button' onClick={handlePreValidate} className='btn btn-primary' >Pré-valider</button>
+        {recapitulatif}
       </div>
     )
   }
