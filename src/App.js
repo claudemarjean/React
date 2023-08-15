@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -6,8 +6,15 @@ const centerH2 = {
   textAlign : "center"
 }
 
-export class App extends Component {
-  render() {
+
+
+const App =  () => {
+  const [prenom, setPrenom] = useState('');
+
+  const handlePrenom = e =>{
+  setPrenom(e.target.value);
+  }
+
     return (
       <div className='container'>
         <h3 style={centerH2}>
@@ -20,7 +27,7 @@ export class App extends Component {
           <div className='row '>
             <div className='col'>
               <label for="" className='form-label'>Prénoms*</label>
-              <input type="text" className='form-control' value="Mickael"/>
+              <input type="text" onChange={handlePrenom} className='form-control' value={prenom}/>
             </div>
             <div className='col'>
               <label for="" className='form-label'>Nom*</label>
@@ -120,6 +127,5 @@ export class App extends Component {
       </div>
     )
   }
-}
 
 export default App
