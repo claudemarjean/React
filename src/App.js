@@ -22,7 +22,9 @@ const App =  () => {
   const [pageWebperso, setPageWebPerso] = useState('');
   const [pageWebInstitut, setPageWebInstitut] = useState('');
   const [inscription, setInscription] = useState(null);
-  const [hebergement, setHebergement] = useState('');
+  const [hebergement, setHebergement] = useState(null);
+  const [corrigeErreur, setCorrigeErreur] = useState(false);
+
   const hommeElement = document.querySelector("#homme");
   const femmeElement = document.querySelector("#femme");
   const inscriptionUn = document.querySelector("#inscrUn");
@@ -30,6 +32,19 @@ const App =  () => {
   const inscriptionTrois = document.querySelector("#inscrTrois");
   const hebUn = document.querySelector("#hebUn");
   const hebDeux = document.querySelector("#hebDeux");
+
+  let formCorrigeErreur = '';
+  const erreurPrenom = prenom === '' && <li className="card-text">Prénom obligatoire.</li>;
+  const erreurNom = nom ==='' && <li className="card-text">Nom obligatoire.</li>;
+  const erreurMail = mail ==='' && <li className="card-text">Adresse Email obligatoire.</li>;
+  const erreurSexe = sexe === null && <li className="card-text">Choix sexe obligatoire.</li>;
+  const erreurInstitution = institution ==='' && <li className="card-text">Institution obligatoire.</li>;
+  const erreurAdresse = adresse === '' && <li className="card-text">Adresse obligatoire.</li>;
+  const erreurPays = pays ==='' && <li className="card-text">Pays obligatoire.</li>;
+  const erreurCodePostal = codePostal === '' && <li className="card-text">Code postal obligatoire.</li>;
+  const erreurVille = ville ==='' && <li className="card-text">Ville obligatoire.</li>;
+  const erreurInscription = inscription === null && <li className="card-text">Formule d'inscription obligatoire.</li>;
+  const erreurHebergement = hebergement === null && <li className="card-text">Moyen d'hébergement obligatoire.</li>;
 
   const handlePrenom = e =>{
     setPrenom(e.target.value);
@@ -46,20 +61,6 @@ const App =  () => {
   const handleSexe = e =>{
     e.target.id === 'homme' ?  (setSexe(1)) : (setSexe(0));
   }
-
-  const checkSexe = useEffect(()=>{
-    if(sexe !== null){
-      if(sexe === 1){
-        hommeElement.checked = true;
-        femmeElement.checked = false;
-      }
-      if(sexe === 0){
-        femmeElement.checked = true;
-        hommeElement.checked = false;
-      }
-    }
-    
-  },[sexe]);
 
   const handleInstitution = e=>{
     setInstitution(e.target.value);
@@ -90,6 +91,53 @@ const App =  () => {
     
   }
 
+  const handleHebergement = e =>{
+    if(e.target.id == 'hebUn') setHebergement(150);
+    if(e.target.id == 'hebDeux') setHebergement(0);
+  }
+
+  const handlePreValidate = e =>{
+    if( prenom === ''  && 
+      nom ==='' && 
+      mail ===''  && 
+      sexe === null  && 
+      institution ==='' &&  
+      adresse === '' &&
+      pays ==='' &&
+      codePostal === '' &&
+      ville ==='' &&
+      inscription === null &&
+      hebergement === null ){
+        setCorrigeErreur(true)
+      }
+  }
+
+  if (corrigeErreur){
+     formCorrigeErreur =  (
+      <div className="card border-default mb-3" >
+      <div className="card-header">Corriger les erreurs suivantes</div>
+      <div className="card-body">
+        {erreurPrenom}
+        {erreurNom}
+        {erreurMail}
+        {erreurSexe}
+        {erreurInstitution}
+        {erreurAdresse}
+        {erreurPays}
+        {erreurCodePostal}
+        {erreurVille}
+        {erreurInscription}
+        {erreurHebergement}
+        
+      </div>
+    </div>
+    );
+  }
+  
+  
+  
+  
+
   const checkInscription = useEffect(()=>{
     if(inscription !== null){
       if(inscription === 150){
@@ -108,13 +156,20 @@ const App =  () => {
         inscriptionTrois.checked = true;
       }
     }
-    
   },[inscription]);
 
-  const handleHebergement = e =>{
-    if(e.target.id == 'hebUn') setHebergement(150);
-    if(e.target.id == 'hebDeux') setHebergement(0);
-  }
+  const checkSexe = useEffect(()=>{
+    if(sexe !== null){
+      if(sexe === 1){
+        hommeElement.checked = true;
+        femmeElement.checked = false;
+      }
+      if(sexe === 0){
+        femmeElement.checked = true;
+        hommeElement.checked = false;
+      }
+    }
+  },[sexe]);
 
   const checkHebergement = useEffect(()=>{
     if(hebergement !== null){
@@ -135,6 +190,7 @@ const App =  () => {
         <h3 style={centerH2}>
           Inscription pour #MaConf2020
         </h3>
+        {formCorrigeErreur}
         <h4>
           Qui êtes vous ?
         </h4>
@@ -194,7 +250,7 @@ const App =  () => {
               </div>
               <div className='col'>
                 <label for="" className='form-label'>Ville*</label>
-                <input onChange={handleCodePostal} className='form-control' type="text" name="" value={ville}/>
+                <input onChange={handleVille} className='form-control' type="text" name="" value={ville}/>
               </div>  
           </div>
           <div className='row'>
@@ -238,7 +294,7 @@ const App =  () => {
         </div>
 
         <hr/>
-        <button type='button' className='btn btn-primary' >Pré-valider</button>
+        <button type='button' onClick={handlePreValidate} className='btn btn-primary' >Pré-valider</button>
       </div>
     )
   }
