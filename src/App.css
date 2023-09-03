@@ -203,7 +203,7 @@ footer {
   margin: 0;
   padding: 0;
   background-color: var(--white-color);
-  display: flex;
+  display: block;
   justify-content: center;
 }
 
