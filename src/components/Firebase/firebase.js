@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
 
 const config = {
     apiKey: "AIzaSyB5MHP9EzoEvONVOdd2VgRrKkNiuW4NoqM",
@@ -28,7 +28,9 @@ class Firebase {
 
   //deconnexion
   signoutUser = () =>  signOut();
-  
+
+  //récuperer le mot de passe
+  passwordReset = email => sendPasswordResetEmail(this.auth, email);
 }
 
 export default Firebase;

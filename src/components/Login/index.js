@@ -61,6 +61,8 @@ const Login = () => {
                   </form>
                   <div className='linkContainer'>
                     <Link className='simpleLink' to='/signup'>Nouveau sur marvel Quiz? Inscrivez-vous maintenant</Link>
+                    <br/>
+                    <Link className='simpleLink' to='/Forgetpassword'>Mot de passe oublié? Récuperer-le ici.</Link>
                   </div>
                 </div>
               </div>
