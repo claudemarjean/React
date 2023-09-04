@@ -160,7 +160,10 @@ class Quiz extends Component  {
     (
       <div>
       <Levels/> 
-      <ProgressBar/>
+      <ProgressBar
+        idQuestions={this.state.idQuestions}
+        maxQuestions={this.state.maxQuestions}
+      />
       <h2>{this.state.question}</h2>
         {displayOptions}
         <button 
@@ -168,7 +171,7 @@ class Quiz extends Component  {
         className='btnSubmit'
         onClick={this.nextQuestion}
         >
-          Suivant
+          {this.state.idQuestions < this.state.maxQuestions - 1 ? 'suivant' : 'Terminer'}
         </button>
     </div>
     )
