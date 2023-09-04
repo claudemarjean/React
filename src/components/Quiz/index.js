@@ -2,6 +2,11 @@ import React,{Component} from 'react'
 import { QuizMarvel } from '../quizMarvel'
 import Levels from '../Levels'
 import ProgressBar from '../ProgressBar'
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
+
 
 class Quiz extends Component  {
   state = {
@@ -36,6 +41,26 @@ class Quiz extends Component  {
      }
   }
 
+  showWelcomeMsg = pseudo =>{
+    if(!this.state.showWelcomeMsg){
+
+      this.setState({
+        showWelcomeMsg: true
+      })
+
+      toast.warn(`Bienvenue ${pseudo} et bonne chance!`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        bodyClassName: "toastify-color-welcome"
+
+        });
+    }
+  }
+
   componentDidMount() { 
     this.loadQuestions(this.state.levelNames[this.state.quizLevel]);
    }
@@ -55,6 +80,10 @@ class Quiz extends Component  {
         useerAnswer: null,
         btnDisabled: true
       })
+    }
+
+    if(this.props.userData.pseudo){
+      this.showWelcomeMsg(this.props.userData.pseudo)
     }
    }
 
@@ -79,6 +108,26 @@ class Quiz extends Component  {
       this.setState(prevState=>({
         score: prevState.score + 1
       }))
+
+      toast.success(`Bravo +1`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        bodyClassName: "toastify-color"
+        });
+    }else{
+      toast.error(`Raté 0`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        bodyClassName: "toastify-color"
+        });
     }
    }
 
