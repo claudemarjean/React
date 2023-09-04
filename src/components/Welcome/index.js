@@ -42,7 +42,7 @@ const Welcome = props => {
     </Fragment>
   ):
   (
-    <div className='quiz-bg'>
+    <div className='quiz-bg container'>
         <div className='Container'>
             <Logout/>
             <Quiz userData={userData}/>

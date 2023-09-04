@@ -11,7 +11,7 @@ const ProgressBar = () => {
                 Progression: 10%
             </div>
         </div>
-        <div>
+        <div className='progressBar'>
             <div className='progressBarChange' style={{width: '50%'}}>
                 
             </div>
