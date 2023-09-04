@@ -13,13 +13,19 @@ class Quiz extends Component  {
     options: [],
     idQuestions: 0,
     btnDisabled: true,
-    useerAnswer: null
+    useerAnswer: null,
+    score: 0
   }
+
+  storedDataRef = React.createRef();
 
   loadQuestions = quizz =>{
      const fetchedArrayQuiz = QuizMarvel[0].quizz[quizz];
      
      if(fetchedArrayQuiz.length >= this.state.maxQuestions){
+
+      this.storedDataRef.current = fetchedArrayQuiz;
+
      const newArray =  fetchedArrayQuiz.map(({answer, ...keepRest})=> keepRest);
 
      this.setState({
@@ -41,6 +47,15 @@ class Quiz extends Component  {
         options: this.state.storedQuestions[this.state.idQuestions].options
       })
     }
+
+    if(this.state.idQuestions !== prevState.idQuestions){
+      this.setState({
+        question : this.state.storedQuestions[this.state.idQuestions].question,
+        options: this.state.storedQuestions[this.state.idQuestions].options,
+        useerAnswer: null,
+        btnDisabled: true
+      })
+    }
    }
 
    submitAnswer = selectedAnswer =>{
@@ -48,6 +63,23 @@ class Quiz extends Component  {
       useerAnswer: selectedAnswer,
       btnDisabled: false
     })
+   }
+
+   nextQuestion = ()=>{
+    if(this.state.idQuestions === this.state.maxQuestions - 1){
+      //end
+    }else{
+      this.setState(prevState => ({
+        idQuestions: prevState.idQuestions + 1
+      }));
+    }
+
+    const goodAnswer = this.storedDataRef.current[this.state.idQuestions].answer;
+    if(this.state.useerAnswer === goodAnswer){
+      this.setState(prevState=>({
+        score: prevState.score + 1
+      }))
+    }
    }
 
   render(){
@@ -70,7 +102,13 @@ class Quiz extends Component  {
       <ProgressBar/>
       <h2>{this.state.question}</h2>
         {displayOptions}
-        <button disabled={this.state.btnDisabled} className='btnSubmit'>Suivant</button>
+        <button 
+        disabled={this.state.btnDisabled} 
+        className='btnSubmit'
+        onClick={this.nextQuestion}
+        >
+          Suivant
+        </button>
     </div>
   )
 }
