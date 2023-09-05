@@ -96,15 +96,30 @@ class Quiz extends Component  {
     })
    }
 
-   gaameOver = () =>{
+   getPercent = (maxQuestion, ourScore)=> (ourScore / maxQuestion) * 100;
+
+   gameOver = () =>{
+
+    const gradePercent = this.getPercent(this.state.maxQuestions, this.state.score);
+
+    if(gradePercent >= 50){
       this.setState({
-        quizEnd : true
+        quizLevel: this.state.quizLevel,
+        percent: gradePercent,
+        quizEnd: true
       })
+    }else{
+      this.setState({
+        percent: gradePercent,
+        quizEnd: true
+      })
+    }
+
    }
 
    nextQuestion = ()=>{
     if(this.state.idQuestions === this.state.maxQuestions - 1){
-      this.gaameOver();
+      this.gameOver();
     }else{
       this.setState(prevState => ({
         idQuestions: prevState.idQuestions + 1
@@ -154,9 +169,14 @@ class Quiz extends Component  {
     )
   })
 
-    return !this.state.quizEnd ? (
+    return this.state.quizEnd ? (
       <QuizOver
         ref={this.storedDataRef}
+        levelNames={this.state.levelNames}
+        score={this.state.score}
+        maxQuestion={this.state.maxQuestions}
+        quizLevel={this.state.quizLevel}
+        percent={this.state.percent}
       />
     ):
     (
