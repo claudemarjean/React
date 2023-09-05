@@ -7,7 +7,8 @@ const QuizOver = React.forwardRef((props, ref) => {
         score,
         maxQuestion,
         quizLevel,
-        percent
+        percent,
+        loadLevelQuestions
     } = props;
 
     const [asked, setAsked] = useState([]);
@@ -18,6 +19,10 @@ const QuizOver = React.forwardRef((props, ref) => {
 
     const average = maxQuestion / 2;
 
+    if(score < average){
+        setTimeout(()=>loadLevelQuestions(quizLevel),3000);
+    }
+
     const decision = score >= average ? (
         <Fragment>
             <div className='stepsBtnContainer'>
@@ -26,13 +31,23 @@ const QuizOver = React.forwardRef((props, ref) => {
                 (
                     <Fragment>
                         <p className='successMsg'>passez, passez au niveau suivant!</p>
-                        <button className='btnResult success'>Niveau Suivant</button>
+                        <button 
+                            className='btnResult success'
+                            onClick={()=>loadLevelQuestions(quizLevel)}
+                            >
+                            Niveau Suivant
+                        </button>
                     </Fragment>
                 ):
                 (
                     <Fragment>
                         <p className='successMsg'>Bravo, vous êtes un expert !</p>
-                        <button className='btnResult gameOver'>Niveau Suivant</button>
+                        <button 
+                            className='btnResult gameOver'
+                            onClick={()=>loadLevelQuestions(0)}
+                            >
+                            Accueil
+                        </button>
                     </Fragment>
                 )
                 }
@@ -81,6 +96,7 @@ const QuizOver = React.forwardRef((props, ref) => {
     ):(
         <tr >
             <td colSpan='3'>
+                <div className='loader'> </div>
                 <p style={{textAlign: 'center', color: 'red'}}>
                     Pas de réponses!
                 </p>
