@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FirebaseContext } from '../Firebase';
 import Logout from '../Logout'
 import Quiz from '../Quiz'
+import Loader from '../Loader';
 
 const Welcome = props => {
 
@@ -36,10 +37,10 @@ const Welcome = props => {
   
 
   return userSession === null ? (
-    <Fragment>
-      <div className='loader'></div>
-      <p>Loading</p>
-    </Fragment>
+    <Loader
+      loadingMsg={"Authentification ..."}
+      styling={{textAlign: 'center',color: '#FFFFFF'}}
+    />
   ):
   (
     <div className='quiz-bg container'>

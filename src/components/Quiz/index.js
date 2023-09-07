@@ -9,26 +9,28 @@ import { FaChevronRight } from "react-icons/fa";
 
 toast.configure();
 
+const initialState = {
+  
+  quizLevel: 0,
+  maxQuestions: 10,
+  storedQuestions: [],
+  question: null,
+  options: [],
+  idQuestions: 0,
+  btnDisabled: true,
+  useerAnswer: null,
+  score: 0,
+  quizEnd : false,
+  percent: null
+}
+
+const levelNames =  ["debutant", "confirme", "expert"];
+
 
 class Quiz extends Component  {
   constructor(props) {
     super(props)
-    
-    this.initialState = {
-      levelNames: ["debutant", "confirme", "expert"],
-      quizLevel: 0,
-      maxQuestions: 10,
-      storedQuestions: [],
-      question: null,
-      options: [],
-      idQuestions: 0,
-      btnDisabled: true,
-      useerAnswer: null,
-      score: 0,
-      quizEnd : false
-    }
-
-    this.state =  this.initialState;
+    this.state =  initialState;
     this.storedDataRef = React.createRef();
 
   }
@@ -46,20 +48,14 @@ class Quiz extends Component  {
 
      const newArray =  fetchedArrayQuiz.map(({answer, ...keepRest})=> keepRest);
 
-     this.setState({
-      storedQuestions: newArray
-     })
-     }else{
-      console.log("pas assez de question");
+     this.setState({ storedQuestions: newArray })
      }
   }
 
   showToastMsg = pseudo =>{
     if(!this.state.showWelcomeMsg){
 
-      this.setState({
-        showWelcomeMsg: true
-      })
+      this.setState({ showWelcomeMsg: true})
 
       toast.warn(`Bienvenue ${pseudo} et bonne chance!`, {
         position: "top-right",
@@ -74,29 +70,35 @@ class Quiz extends Component  {
     }
   }
 
-  componentDidMount() { 
-    this.loadQuestions(this.state.levelNames[this.state.quizLevel]);
-   }
+  componentDidMount() {this.loadQuestions(levelNames[this.state.quizLevel]);}
 
    componentDidUpdate(prevProps, prevState){
-    if((this.state.storedQuestions !== prevState.storedQuestions) &&  this.state.storedQuestions.length){
+      const {
+      maxQuestions,
+      storedQuestions,
+      idQuestions,
+      quizEnd,
+      score
+    } = this.state;
+
+    if((storedQuestions !== prevState.storedQuestions) &&   storedQuestions.length){
       this.setState({
-        question : this.state.storedQuestions[this.state.idQuestions].question,
-        options: this.state.storedQuestions[this.state.idQuestions].options
+        question : storedQuestions[idQuestions].question,
+        options: storedQuestions[idQuestions].options
       })
     }
 
-    if((this.state.idQuestions !== prevState.idQuestions) && this.state.storedQuestions.length ){
+    if((idQuestions !== prevState.idQuestions) && storedQuestions.length ){
       this.setState({
-        question : this.state.storedQuestions[this.state.idQuestions].question,
-        options: this.state.storedQuestions[this.state.idQuestions].options,
+        question : storedQuestions[idQuestions].question,
+        options: storedQuestions[idQuestions].options,
         useerAnswer: null,
         btnDisabled: true
       })
     }
 
-    if(this.state.quizEnd !== prevState.quizEnd){
-      const gradePercent = this.getPercent(this.state.maxQuestions, this.state.score);
+    if(quizEnd !== prevState.quizEnd){
+      const gradePercent = this.getPercent(maxQuestions, score);
       this.gameOver(gradePercent);
     }
 
@@ -132,9 +134,7 @@ class Quiz extends Component  {
         quizEnd: true
       })
     }else{
-      this.setState(prevState => ({
-        idQuestions: prevState.idQuestions + 1
-      }));
+      this.setState(prevState => ({idQuestions: prevState.idQuestions + 1}));
     }
 
     const goodAnswer = this.storedDataRef.current[this.state.idQuestions].answer;
@@ -166,19 +166,32 @@ class Quiz extends Component  {
    }
 
    loadLevelQuestions = param =>{
-      this.setState({...this.initialState,quizLevel: param})
+      this.setState({...initialState,quizLevel: param})
 
-      this.loadQuestions(this.state.levelNames[param]);
+      this.loadQuestions(levelNames[param]);
    }
 
   render(){
 
-  const {pseudo} = this.props.userData 
+    const {
+    quizLevel,
+    maxQuestions,
+    question,
+    options,
+    idQuestions,
+    btnDisabled,
+    useerAnswer,
+    score,
+    quizEnd,
+    percent
+  } = this.state;
+
+  const {pseudo} = this.props.userData ;
   
-  const displayOptions = this.state.options.map((option, index)=>{
+  const displayOptions = options.map((option, index)=>{
     return(
       <p key={index} 
-        className= {`answerOptions ${this.state.useerAnswer ===  option ? "selected" : null} `}
+        className= {`answerOptions ${useerAnswer ===  option ? "selected" : null} `}
         onClick={()=> this.submitAnswer(option)}
       >
         <FaChevronRight/>{option}
@@ -186,35 +199,35 @@ class Quiz extends Component  {
     )
   })
 
-    return this.state.quizEnd ? (
+    return quizEnd ? (
       <QuizOver
         ref={this.storedDataRef}
-        levelNames={this.state.levelNames}
-        score={this.state.score}
-        maxQuestion={this.state.maxQuestions}
-        quizLevel={this.state.quizLevel}
-        percent={this.state.percent}
+        levelNames={levelNames}
+        score={score}
+        maxQuestion={maxQuestions}
+        quizLevel={quizLevel}
+        percent={percent}
         loadLevelQuestions={this.loadLevelQuestions}
       />
     ):
     (
       <div>
       <Levels
-        levelNames={this.state.levelNames}
-        quizLevel={this.state.quizLevel}
+        levelNames={levelNames}
+        quizLevel={quizLevel}
       /> 
       <ProgressBar
-        idQuestions={this.state.idQuestions}
-        maxQuestions={this.state.maxQuestions}
+        idQuestions={idQuestions}
+        maxQuestions={maxQuestions}
       />
-      <h2>{this.state.question}</h2>
+      <h2>{question}</h2>
         {displayOptions}
         <button 
-        disabled={this.state.btnDisabled} 
+        disabled={btnDisabled} 
         className='btnSubmit'
         onClick={this.nextQuestion}
         >
-          {this.state.idQuestions < this.state.maxQuestions - 1 ? 'suivant' : 'Terminer'}
+          {idQuestions < maxQuestions - 1 ? 'suivant' : 'Terminer'}
         </button>
     </div>
     )
