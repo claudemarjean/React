@@ -29,13 +29,19 @@ const QuizOver = React.forwardRef((props, ref) => {
 
     const showModal = id =>{
         setOpenModal(true);
+        
 
         axios
         .get(`https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${API_PUBLIC_KEY}&hash=${hash}`)
         .then(response=>{
             setCharacterInfos(response.data);
             setLoading(false);
-            console.log(response);
+            
+            localStorage.setItem(id, JSON.stringify(response.data));
+            if(!localStorage.getItem('marvelStorageDate')){
+                localStorage.setItem('marvelStorageDate', Date.now());
+            }
+            
         })
         .catch(error=> console.log(error)) 
     }
