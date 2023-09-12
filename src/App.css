@@ -79,7 +79,7 @@ h3 {
 body {
   margin: 0;
   padding: 0;
-  background-image: url(images/bg-noise-texture.png);
+  /* background-image: url(images/bg-noise-texture.png); */
   background-repeat: repeat;
   height: 100vh;
   display: flex;

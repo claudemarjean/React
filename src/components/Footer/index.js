@@ -3,10 +3,9 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-        <div className='footer-container'>
+        <div className=''>
             <p>Projet réalisé par C109 - 2023</p>
-            <p>Les icônes wolverine,  Iron-man, Spider-man, batman sont prises sur iconFinder.com</p>
-        </div>
+           </div>
     </footer>
   )
 }
