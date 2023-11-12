@@ -16,7 +16,7 @@ img {
     margin: 0 auto;
 }
 
-#count {
+#count, #countTab {
     font-weight: bold;
     font-size: 30px;
 }
@@ -37,4 +37,13 @@ button {
 button:hover {
     border: 1px solid rgb(54, 4, 54);
     background: rgb(54, 4, 54);
+}
+
+.section-one{
+    display: flex;
+}
+
+.container img{
+    max-width: 100%;
+    height: auto;
 }
