@@ -1,6 +1,7 @@
 // Définir le type d'action
 const BUY_PHONE = 'BUY_PHONE';
 const BUY_TABLET = 'BUY_TABLET';
+const BUY_TV = 'BUY_TV';
 
 // Action creator
 let buyPhone = () => {
@@ -15,15 +16,24 @@ let buyTablet = () =>{
     }
 }
 
+let buyTv = () =>{
+    return {
+        type: BUY_TV
+    }
+}
+
 
 //Reducer
-
-const initialState = {
+const initialStatePhones = {
     phones: 5,
     tablet: 10
 }
 
-const reducer = (state = initialState, action) =>{
+const initialStateTv = {
+    tv : 20
+}
+
+const phonesReducer = (state = initialStatePhones, action) =>{
     switch(action.type){
         case BUY_PHONE:
             return{
@@ -39,24 +49,50 @@ const reducer = (state = initialState, action) =>{
     }
 }
 
+const tvReducer = (state = initialStateTv, action) =>{
+    switch(action.type){
+        case BUY_TV:
+            return{
+                ...state,
+                tv: state.tv - 1
+            }
+        default: return  state
+    }
+}
+
+//combine reducer
+const rootReducer = Redux.combineReducers({
+    phone: phonesReducer,
+    tv: tvReducer
+
+})
+
 //créer le store
-const store = Redux.createStore(reducer);
+const store = Redux.createStore(rootReducer);
 
 //récupérer la data du store
 const availablePhones = document.getElementById('count');
 const availableTablet = document.getElementById('countTab');
-availablePhones.innerHTML = store.getState().phones;
-availableTablet.innerHTML = store.getState().tablet;
+const availableTv = document.getElementById('countTv');
+availablePhones.innerHTML = store.getState().phone.phones;
+availableTablet.innerHTML = store.getState().phone.tablet;
+availableTv.innerHTML = store.getState().tv.tv;
 
 document.getElementById('buyPhone').addEventListener('click', function(){
     store.dispatch(buyPhone())
 })
+
 document.getElementById('buyTablet').addEventListener('click', function(){
     store.dispatch(buyTablet())
 })
 
+document.getElementById('buyTv').addEventListener('click', function(){
+    store.dispatch(buyTv())
+})
 
+//listener
 store.subscribe(()=>{
-    availablePhones.innerHTML = store.getState().phones;
-    availableTablet.innerHTML = store.getState().tablet;
+    availablePhones.innerHTML = store.getState().phone.phones;
+    availableTablet.innerHTML = store.getState().phone.tablet;
+    availableTv.innerHTML = store.getState().tv.tv;
 })

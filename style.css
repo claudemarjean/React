@@ -16,7 +16,7 @@ img {
     margin: 0 auto;
 }
 
-#count, #countTab {
+#count, #countTab, #countTv {
     font-weight: bold;
     font-size: 30px;
 }
