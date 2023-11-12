@@ -18,6 +18,17 @@ const DropTarget = ({ onDrop, children }) => {
   );
 };
 
+const FileList = ({ files }) => (
+  <div>
+    <h3>File List</h3>
+    <ul>
+      {files.map((file, index) => (
+        <li key={index}>{file.name}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 const DragAndDropContainer = () => {
   const [droppedFiles, setDroppedFiles] = useState([]);
 
@@ -27,16 +38,15 @@ const DragAndDropContainer = () => {
 
   return (
     <div>
-      <h2>Drag and Drop Files</h2>
+      <h2>drag and drop</h2>
       <DropTarget onDrop={handleDrop}>
         {droppedFiles.map((file, index) => (
           <div key={index} style={{ border: '1px solid black', padding: '8px', margin: '8px' }}>
             <p>File Name: {file.name}</p>
-            <p>File Type: {file.type}</p>
-            <p>File Size: {file.size} bytes</p>
           </div>
         ))}
       </DropTarget>
+      <FileList files={droppedFiles} />
     </div>
   );
 };
