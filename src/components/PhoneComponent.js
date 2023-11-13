@@ -1,21 +1,28 @@
 import React from 'react';
-import phone from '../images/phone.png'
+import phone from '../images/phone.png';
+import {connect} from 'react-redux';
 
 const taillePhone={
-    width: '50px'
+    width: '40%  '
 }
 
-function PhoneComponent(){
+function PhoneComponent(props){
     return (
         <div className='container'>
             <img src={phone} alt="phone" style={taillePhone}/>
             <p>
                 Disponibilité:
-                <span id='count'></span>
+                <span id='count'>{props.phones}</span>
             </p>
             <button>Acheter</button>
         </div>
     )
 }
 
-export default PhoneComponent;
+const mapStateToProps = (state) => {
+    return {
+        phones: state.phones
+    }
+}
+
+export default connect(mapStateToProps)(PhoneComponent);
