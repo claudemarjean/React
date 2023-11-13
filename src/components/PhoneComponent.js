@@ -1,6 +1,7 @@
 import React from 'react';
 import phone from '../images/phone.png';
 import {connect} from 'react-redux';
+import { buyPhone } from '../redux/phone/actionPhone';
 
 const taillePhone={
     width: '40%  '
@@ -14,7 +15,7 @@ function PhoneComponent(props){
                 Disponibilité:
                 <span id='count'>{props.phones}</span>
             </p>
-            <button>Acheter</button>
+            <button onClick={() => props.buyPhone()}>Acheter</button>
         </div>
     )
 }
@@ -25,4 +26,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(PhoneComponent);
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        buyPhone: () => dispatch(buyPhone())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PhoneComponent);

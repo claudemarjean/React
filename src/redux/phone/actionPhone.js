@@ -1,6 +1,6 @@
 import {BUY_PHONE} from './type'
 
-export const buyPhone() =>{
+export const buyPhone = () =>{
     return{
         type: BUY_PHONE
     }
