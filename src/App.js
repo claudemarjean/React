@@ -1,13 +1,15 @@
 import React from "react";
-import PhoneComponent from './components/PhoneComponent';
+import PhoneContainer from './components/PhoneContainer';
 import {Provider} from 'react-redux';
 import store from './redux/store'
+import TvContainer from "./components/tvContainer";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="section-one">
-        <PhoneComponent/>
+        <PhoneContainer/>
+        <TvContainer/>
       </div>
     </Provider>
     
