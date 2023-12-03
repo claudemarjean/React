@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import phone from '../images/phone.png';
 import {connect} from 'react-redux';
 import { buyPhone } from '../redux/phone/actionPhone';
@@ -7,7 +7,14 @@ const taillePhone={
     width: '40%  '
 }
 
+const inlineElement = {
+    display: 'flex'
+}
+
 function PhoneContainer(props){
+
+    const[totalPhone, setTotalPhone] =  useState(1)
+
     return (
         <div className='container'>
             <img src={phone} alt="phone" style={taillePhone}/>
@@ -15,7 +22,11 @@ function PhoneContainer(props){
                 Disponibilité:
                 <span id='count'>{props.phones}</span>
             </p>
-            <button onClick={() => props.buyPhone()}>Acheter</button>
+            <div className='btnContainer' style={inlineElement}>
+                <button onClick={() => props.buyPhone(totalPhone)}>Acheter</button>
+                <input type='text' value={totalPhone} onChange={e => setTotalPhone(e.target.value)}/>
+            </div>
+            
         </div>
     )
 }
@@ -28,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        buyPhone: () => dispatch(buyPhone())
+        buyPhone: totalPhone => dispatch(buyPhone(totalPhone))
     }
 }
 
