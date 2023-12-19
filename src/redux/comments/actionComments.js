@@ -6,14 +6,16 @@ const  loadApiComments = () =>{
     }
 }
 
-const  loadCommentsSuccess = () =>{
+const  loadCommentsSuccess = comments =>{
     return{
-        type: LOAD_COMMNETS_SUCCESS
+        type: LOAD_COMMNETS_SUCCESS,
+        payload: comments
     }
 }
 
-const  loadCommentsError = () =>{
+const  loadCommentsError = error =>{
     return{
-        type: LOAD_COMMNETS_ERROR
+        type: LOAD_COMMNETS_ERROR,
+        payload: error
     }
 }
