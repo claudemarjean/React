@@ -11,8 +11,9 @@ function App() {
       <div className="section-one">
         <PhoneContainer/>
         <TvContainer/>
+        
       </div>
-        <CommentsContainer/>
+      <CommentsContainer/>
     </Provider>
     
   );

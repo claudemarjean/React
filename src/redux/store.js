@@ -6,7 +6,8 @@ import commentReducer from './comments/reducerComments';
 const rootReducer = combineReducers(
     {
         phone: phoneReducer,
-        television: tvReducer
+        television: tvReducer,
+        comments: commentReducer
     }
 )
 
