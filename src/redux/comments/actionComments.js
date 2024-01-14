@@ -19,3 +19,9 @@ const  loadCommentsError = error =>{
         payload: error
     }
 }
+
+export const apiCall = () =>{
+    return ()=>{
+         
+    }
+}

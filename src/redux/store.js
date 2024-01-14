@@ -1,7 +1,8 @@
-import { legacy_createStore as createStore, combineReducers} from 'redux'
+import { legacy_createStore as createStore, combineReducers, applyMiddleware} from 'redux'
 import phoneReducer from './phone/reducerPhone'
 import tvReducer from './tv/reducerTv';
 import commentReducer from './comments/reducerComments';
+import { thunk } from 'redux-thunk';
 
 const rootReducer = combineReducers(
     {
@@ -11,6 +12,6 @@ const rootReducer = combineReducers(
     }
 )
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
