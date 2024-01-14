@@ -47,3 +47,7 @@ button:hover {
     max-width: 100%;
     height: auto;
 }
+
+.comments{
+    border: 1px solid #000;
+  }
