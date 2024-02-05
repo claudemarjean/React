@@ -3,7 +3,7 @@ import React from 'react'
 const AddBooks = () => {
   return (
     <main role="main">
-        <div className='jumbotron jumbotron-fluid'>
+        <div className='jumbotron jumbotron-fluid mb-5'>
             <div className='container text-center'>
                 <h1 className='display-4'>Books</h1>
                 <p>Ajouter un livre à votre bibliothèque</p>
@@ -12,7 +12,7 @@ const AddBooks = () => {
                     <div className="form-group">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control "
                             placeholder="Titre"
                             required
                         />
@@ -20,7 +20,7 @@ const AddBooks = () => {
                     <div className="form-group">
                         <input
                             type="text"
-                            className="form-control ms-3"
+                            className="form-control ms-2"
                             placeholder="Auteur"
                             required
                         />
@@ -32,6 +32,21 @@ const AddBooks = () => {
                     </div>
                 </form>
 
+            </div>
+        </div>
+        <div className='container' style={{minHeight: '500px'}}>
+            <div className='row'>
+                <div className='col-md-12'>
+                    <ul className='list-group'>
+                        <li className='list-group-item list-group-item-light d-flex justify-content-between'>
+                            livres enregistrés ici
+                        </li>
+                    </ul>
+                    <div className='d-flex justify-content-center'>
+                        <button className='btn btn-danger mt-4 mb-5'>Effacer tous les livres</button>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </main>
